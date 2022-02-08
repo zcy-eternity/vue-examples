@@ -114,11 +114,11 @@
 export default {
   name: "HelloWorld",
   props: {
-    msg: String,
+    msg: String
   },
   created() {
     let a = 10;
-  },
+  }
 };
 </script>
 

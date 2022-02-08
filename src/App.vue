@@ -1,14 +1,17 @@
 <template>
   <div id="app">
     <sidebar id="sidebar" />
-    <router-view id="router" />
+    <router-view id="router" v-bind:key="$route.path" />
+    <!-- <keep-alive>
+      <router-view id="router" />
+    </keep-alive> -->
   </div>
 </template>
 
 <script>
 import sidebar from "@/views/Sidebar";
 export default {
-  components: { sidebar },
+  components: { sidebar }
 };
 </script>
 <style>

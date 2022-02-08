@@ -1,0 +1,55 @@
+<template>
+  <div>
+    <p>
+      需求必须提交条款才能选择操作以及提交；必须选择2项才能提交；等于两项时checkbox变为不可用
+    </p>
+    <form>
+      <label><input type="checkbox" v-model="agreed" /></label>
+    </form>
+    <template v-for="(c, index) in courses">
+      <label :key="`lab${index}`">
+        <input
+          ref="checkboxs"
+          type="checkbox"
+          :key="`input${index}`"
+          v-model="selectedCourses"
+          :value="{ id: c.id }"
+          :disabled="!agreed"
+          @change="change"
+        />
+        {{ c.name }}
+      </label>
+      <br :key="`br${index}`" />
+    </template>
+    <br />
+    <button
+      type="button"
+      :disabled="!agreed || !(selectedCourses.length >= amount)"
+    ></button>
+  </div>
+</template>
+<script>
+export default {
+  data: () => ({
+    courses: [
+      { id: 4, name: "JAVA" },
+      { id: 5, name: "web开发技术" },
+      { id: 6, name: "系统程序设计" },
+      { id: 7, name: "移动终端开发技术" }
+    ],
+    amount: 2,
+    selectedCourses: [{ id: 4 }],
+    agreed: false
+  }),
+  methods: {
+    change() {
+      let checkboxDis = this.selectedCourses.length >= this.amount;
+      this.$refs.checkboxs
+        .filter(c => !c.checked)
+        .forEach(c => {
+          c.disabled = checkboxDis;
+        });
+    }
+  }
+};
+</script>
