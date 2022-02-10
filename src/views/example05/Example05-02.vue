@@ -5,27 +5,33 @@
     </p>
     <form>
       <label><input type="checkbox" v-model="agreed" /></label>
+      <br />
+      <template v-for="(c, index) in courses">
+        <label :key="`lab${index}`">
+          <input
+            ref="checkboxs"
+            type="checkbox"
+            :key="`input${index}`"
+            v-model="selectedCourses"
+            :value="{ id: c.id }"
+            :disabled="!agreed"
+            @change="change"
+          />
+          {{ c.name }}
+        </label>
+        <br :key="`br${index}`" />
+      </template>
+      <br />
+      <v-btn
+        color="#64B5F6"
+        small
+        type="button"
+        :disabled="!agreed || !(selectedCourses.length >= amount)"
+      >
+        submit
+      </v-btn>
     </form>
-    <template v-for="(c, index) in courses">
-      <label :key="`lab${index}`">
-        <input
-          ref="checkboxs"
-          type="checkbox"
-          :key="`input${index}`"
-          v-model="selectedCourses"
-          :value="{ id: c.id }"
-          :disabled="!agreed"
-          @change="change"
-        />
-        {{ c.name }}
-      </label>
-      <br :key="`br${index}`" />
-    </template>
-    <br />
-    <button
-      type="button"
-      :disabled="!agreed || !(selectedCourses.length >= amount)"
-    ></button>
+    <p>{{ selectedCourses }}</p>
   </div>
 </template>
 <script>

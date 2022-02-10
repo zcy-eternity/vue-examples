@@ -7,7 +7,7 @@
         同意以上条款
       </label>
       <br />
-      <button :disabled="disabled">提交</button>
+      <v-btn color="#64B5F6" small :disabled="disabled">提交</v-btn>
     </p>
     <p
       @mousemove="actived"

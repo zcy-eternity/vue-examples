@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     getTitle() {
-      return this.homeworks.find((h) => h.id == this.hid).title;
+      return this.homeworks.find(h => h.id == this.hid).title;
     }
   }
 };

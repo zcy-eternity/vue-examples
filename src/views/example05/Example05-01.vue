@@ -40,7 +40,7 @@
         form表单仅是一个容器
         不是由浏览器发请求而是由js提供 
       -->
-      <button @click="submit" type="button">提交</button>
+      <v-btn color="#64B5F6" small @click="submit" type="button">提交</v-btn>
     </form>
     <p>{{ user }}</p>
     <hr />

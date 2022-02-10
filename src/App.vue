@@ -1,33 +1,29 @@
 <template>
-  <div id="app">
-    <sidebar id="sidebar" />
-    <router-view id="router" v-bind:key="$route.path" />
+  <v-app id="app">
+    <v-container fluid>
+      <v-row>
+        <v-col cols="3">
+          <sidebar />
+        </v-col>
+        <v-col cols="9">
+          <router-view v-bind:key="$route.path" />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <alertdialog />
     <!-- <keep-alive>
       <router-view id="router" />
     </keep-alive> -->
-  </div>
+  </v-app>
 </template>
 
 <script>
 import sidebar from "@/views/Sidebar";
 export default {
-  components: { sidebar }
+  components: {
+    sidebar,
+    alertdialog: () => import("@/components/AlertDialog.vue")
+  }
 };
 </script>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-#sidebar {
-  width: 300px;
-  display: inline-block;
-  border: 1px solid red;
-  vertical-align: top;
-}
-#router {
-  display: inline-block;
-  border: 1px solid red;
-}
-</style>

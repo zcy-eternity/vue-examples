@@ -21,7 +21,11 @@
         <td>{{ index }}</td>
         <td>{{ h.name }}</td>
         <td>{{ formatDate(h.deadline) }}</td>
-        <td><button @click="removeItem(index)">remove item</button></td>
+        <td>
+          <v-btn color="#64B5F6" small @click="removeItem(index)">
+            remove item
+          </v-btn>
+        </td>
       </tr>
     </table>
     <p>
@@ -29,7 +33,7 @@
       <br />
       this.$set(vm.items, indexOfItem, newValue)
     </p>
-    <button @click="addItem">add item</button>
+    <v-btn color="#64B5F6" small @click="addItem">add item</v-btn>
   </div>
 </template>
 <script>
@@ -55,7 +59,7 @@ export default {
   },
   computed: {
     formatDate() {
-      return (data) => data.replace("T", " ").substring(0, 16);
+      return data => data.replace("T", " ").substring(0, 16);
     }
   }
 };

@@ -5,7 +5,7 @@
     <p>{{ replace }}</p>
     <p>{{ myreplace(user.insertTime) }}</p>
     <!-- 如果需要加参数可以加括号 -->
-    <button @click="changed">click</button>
+    <v-btn @click="changed" color="#64B5F6" small>click</v-btn>
   </div>
 </template>
 <script>
@@ -39,7 +39,7 @@ export default {
       return this.user.insertTime.replace("T", " ");
     },
     myreplace() {
-      return (data) => data.replace("T", " ");
+      return data => data.replace("T", " ");
     }
   }
 };
