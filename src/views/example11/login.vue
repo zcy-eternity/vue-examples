@@ -10,7 +10,7 @@
       <label>密码</label>
       <input type="password" v-model="password" />
       <br />
-      <v-btn color="#64B5F6" small @click="login" type="button">登录</v-btn>
+      <v-btn small @click="login" type="button">登录</v-btn>
     </form>
   </div>
 </template>
