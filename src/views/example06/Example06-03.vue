@@ -3,8 +3,8 @@
     <h1>Mutation</h1>
     {{ user.name }} / {{ user.address }}
     <p>
-      <v-text-field v-model="myUser.name" />
-      <v-text-field v-model="myUser.address" />
+      <v-text-field label="User Name" v-model="myUser.name" />
+      <v-text-field label="Password" v-model="myUser.address" />
       <v-btn color="#64B5F6" small type="button" @click="change">change</v-btn>
     </p>
   </div>

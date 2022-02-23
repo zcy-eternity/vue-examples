@@ -50,7 +50,7 @@ export default {
     },
     login() {
       axios
-        .post("login", {
+        .post("login1", {
           user: {
             userName: "bo",
             userId: "B12"

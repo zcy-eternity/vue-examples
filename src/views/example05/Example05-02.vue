@@ -38,13 +38,13 @@
 export default {
   data: () => ({
     courses: [
-      { id: 4, name: "JAVA" },
-      { id: 5, name: "web开发技术" },
-      { id: 6, name: "系统程序设计" },
-      { id: 7, name: "移动终端开发技术" }
+      { id: 1, name: "JAVA" },
+      { id: 2, name: "web开发技术" },
+      { id: 3, name: "系统程序设计" },
+      { id: 4, name: "移动终端开发技术" }
     ],
     amount: 2,
-    selectedCourses: [{ id: 4 }],
+    selectedCourses: [{ id: 1 }],
     agreed: false
   }),
   methods: {

@@ -2,7 +2,7 @@
   <div>
     <h1>Form Binding</h1>
     <form>
-      <input type="text" v-model="user.name" />
+      <v-text-field type="text" v-model="user.name" placeholder="user.name" />
       <br />
       <label>
         <!-- 绑定到一个响应式属性上为一组,相当于name -->
@@ -15,12 +15,20 @@
         女
       </label>
       <br />
-      <!-- 以select中的name为键，以option中选择的值为值 值是动态绑定的-->
-      <select v-model="user.title">
+      <!-- 以select中的name为键，以option中选择的值为值 值是动态绑定的 -->
+      <!-- <select v-model="user.title">
         <option v-for="(t, index) in titles" :key="index" :value="{ id: t.id }">
           {{ t.name }}
         </option>
-      </select>
+      </select> -->
+      <v-select
+        v-model="user.title"
+        label="Select"
+        :items="titles"
+        item-text="name"
+        item-value="id"
+        return-object
+      ></v-select>
       <br />
       <!-- key没有绑定到template上 双向绑定到每一个input标签-->
       <template v-for="(c, index) in courses">
@@ -48,7 +56,12 @@
     <!-- 读取文件不能用双向绑定 只能用change事件监听 -->
     <input type="file" @change="fileChange" />
     <br />
-    <p v-if="file != null">{{ file.name }}/{{ file.size }}</p>
+    <p v-if="file != null">
+      <br />
+      文件名：{{ file.name }}
+      <br />
+      文件大小：{{ file.size }}
+    </p>
     <br />
   </div>
 </template>
@@ -59,9 +72,9 @@ export default {
       name: null,
       sex: null,
       courses: [],
-      title: {}
+      title: { id: null, name: null }
     },
-    file: {},
+    file: null,
     titles: [
       { id: 1, name: "讲师" },
       { id: 2, name: "教授" },
@@ -85,3 +98,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.v-text-field {
+  width: 85px;
+}
+</style>

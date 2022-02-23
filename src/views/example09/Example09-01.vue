@@ -9,7 +9,7 @@
       <label></label>
       <v-text-field label="Password" type="password" v-model="password" />
       <br />
-      <v-btn color="#64B5F6" small @click="login">登录</v-btn>
+      <v-btn color="#64B5F6" small type="button" @click="login">登录</v-btn>
     </form>
   </div>
 </template>

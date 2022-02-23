@@ -1,9 +1,5 @@
 <template>
-  <div>
-    {{ sid }}
-    {{ $route.params.sid }}
-    {{ getTitle }}
-  </div>
+  <div>sid: {{ sid }} hid: {{ $route.params.hid }} title：{{ getTitle }}</div>
 </template>
 <script>
 export default {

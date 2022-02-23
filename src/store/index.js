@@ -16,8 +16,8 @@ const myState = {
 };
 //在内部声明事件 同步 更新
 const myMutations = {
-  updateUser(state, user) {
-    state.user = user;
+  updateUser(state, data) {
+    state.user = data;
   },
   [types.LIST_HOMEWORKS](state, data) {
     state.homeworks = data;
@@ -30,15 +30,22 @@ const myMutations = {
   },
   [types.LOGIN](state, data) {
     state.user = data;
+  },
+  [types.DELHOMEWORK](state, id) {
+    state.homeworks.forEach((value, index) => {
+      if (value.id == id) {
+        state.homeworks.splice(index, 1);
+      }
+    });
   }
 };
 const myActions = {
-  [types.UPDATAUSER]({ commit }, data) {
+  updateUser({ commit }, data) {
     setTimeout(() => {
       commit(types.UPDATAUSER, data);
     }, 2000);
   },
-  async [types.LIST_HOMEWORKS]({ commit }, data) {
+  async [types.LIST_HOMEWORKS]({ commit }) {
     let resp = await axios.get("homeworks");
     commit(types.LIST_HOMEWORKS, resp.data.homeworks);
   },
@@ -53,8 +60,10 @@ const myActions = {
       sessionStorage.setItem("role", resp.data.role);
       commit(types.LOGIN, true);
     }
+  },
+  [types.DELHOMEWORK]({ commit }, data) {
+    commit(types.DELHOMEWORK, data.hid);
   }
-
   //将返回的数据不放到vuex上，直接给相应的组件 返回 promise成功后的结果
   // async [types.GET_HOMEWORK]({ commit }, data) {
   //   let resp = await axios.get(`homeworks/${data.hid}`);

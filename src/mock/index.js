@@ -35,7 +35,7 @@ mock.onGet(path("users/{uid}/homeworks/{hid}")).reply(200, {
 
 // config是axios config对象。包含请求信息
 // 返回数组，[status, {data对象}, {header对象}]
-mock.onPost("login").reply(c => {
+mock.onPost("login1").reply(c => {
   // 获取请求数据
   // 此时请求的js对象已转为json字符串。因此需要转换回JS对象
   let data = JSON.parse(c.data); //拿到请求体对象

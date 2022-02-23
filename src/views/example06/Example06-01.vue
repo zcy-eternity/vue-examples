@@ -12,7 +12,7 @@
       <br />
       {{ user.name }}
       <br />
-      {{ user1.name }}
+      {{ user1.address }}
     </p>
   </div>
 </template>
